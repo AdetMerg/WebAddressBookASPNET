@@ -1,0 +1,92 @@
+﻿@page
+@model WebAddressBook.Pages.Contacts.IndexModel
+
+@{
+    ViewData["Title"] = "Список контактов";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Создать новый контакт</a>
+</p>
+
+<form>
+    <p>
+        Поиск: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="найти" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].SecondName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].Birthday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].SkypeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].MailboxName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].Comments)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Contact) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MailboxName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Править</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Детали</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
